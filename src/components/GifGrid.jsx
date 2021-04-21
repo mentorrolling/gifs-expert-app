@@ -3,6 +3,7 @@
 import React from "react";
 import useFetchGifs from "../hooks/useFetchGifs";
 import GifGridItem from "./GifGridItem";
+import LoadingGif from "./LoadingGif";
 
 const GifGrid = ({ category }) => {
   const { data, loading } = useFetchGifs(category);
@@ -46,8 +47,8 @@ const GifGrid = ({ category }) => {
         ))}
       </div> */}
 
-      {loading && "Cargando..."}
       <div className="container">
+        {loading && <LoadingGif />}
         {data.map((img) => (
           <GifGridItem img={img} key={img.id} />
         ))}
